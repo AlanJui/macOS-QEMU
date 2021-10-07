@@ -1,0 +1,7 @@
+# !/bin/sh
+
+# Create Disk Image for Virtual Machine
+SRC_DIR=$( cd $(dirname "$0" ); pwd )
+source "${SRC_DIR}/0-Settings"
+
+qemu-img create -f qcow2 "$VM.qcow2" 128G

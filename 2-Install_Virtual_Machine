@@ -1,0 +1,17 @@
+#!/bin/sh
+SRC_DIR=$( cd $(dirname "$0" ); pwd )
+source "${SRC_DIR}/0-Settings"
+
+qemu-system-x86_64 \
+    -machine type=q35,accel="$VT" \
+    -cpu host \
+    -m 4G \
+    -vga std \
+    -full-screen \
+    -display default \
+    -usb \
+    -device usb-tablet \
+    -drive file="$VM_DIR/$VM.qcow2",if=virtio \
+    -drive file="$ISO_DIR/$ISO",if=ide,index=1,media=cdrom \
+    -net nic \
+    -net user,hostfwd=tcp::2222-:22

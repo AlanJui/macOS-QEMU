@@ -1,0 +1,10 @@
+#!/bin/sh
+
+SRC_DIR=$( cd $(dirname "$0" ); pwd )
+
+export VT="hvf"
+export VM="manjaro-gnome"
+export VM_DIR="${SRC_DIR}"
+export ISO="manjaro-gnome-21.1.4-minimal-210927-linux513.iso"
+export ISO_DIR="/Users/alanjui/workspace/qemu/iso"
+

@@ -1,0 +1,8 @@
+# Temp files
+._*
+.qcow2
+test*
+
+# Disk Image Files
+*.qcow2
+

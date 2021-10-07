@@ -1,0 +1,19 @@
+#!/bin/sh
+SRC_DIR=$( cd $(dirname "$0" ); pwd )
+source "${SRC_DIR}/0-Settings"
+
+sudo qemu-system-x86_64 \
+    -machine type=q35,accel="$VT" \
+    -cpu host \
+    -m 4G \
+    -vga virtio \
+    -display default \
+    -full-screen \
+    -usb \
+    -device usb-tablet \
+    -drive file="$VM_DIR/$VM.qcow2",if=virtio \
+    -netdev tap,id=n1,ifname=tap0,script=/etc/qemu-ifup,downscript=/qemu/qemu-ifdown,br=br0 \
+    -net nic,netdev=n1,model=virtio-net-pci
+
+    # -netdev bridge,br=br0,id=n1 \
+    # -device virtio-net-pci,netdev=n1
