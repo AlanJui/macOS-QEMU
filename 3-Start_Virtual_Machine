@@ -6,9 +6,9 @@ qemu-system-x86_64 \
     -machine type=q35,accel="$VT" \
     -cpu host \
     -m 4G \
-    -vga virtio \
-    -display vnc=:7 \
+    -vga std \
     -usb \
     -device usb-tablet \
     -drive file="$VM_DIR/$VM.qcow2",if=virtio \
+    -net nic \
     -net user,hostfwd=tcp::2222-:22 -net nic

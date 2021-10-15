@@ -7,10 +7,9 @@ qemu-system-x86_64 \
     -cpu host \
     -m 4G \
     -vga virtio \
-    -display default \
+    -display vnc=":$VNC" \
     -usb \
     -device usb-tablet \
     -drive file="$VM_DIR/$VM.qcow2",if=virtio \
-    -vnc :5 \
     -net nic \
     -net user,hostfwd=tcp::2222-:22
